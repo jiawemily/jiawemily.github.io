@@ -176,9 +176,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="MITgcm修正边界流速"><a href="#MITgcm修正边界流速" class="headerlink" title="MITgcm修正边界流速"></a>MITgcm修正边界流速</h1><hr>
-<p>作者：Emily</p>
-<ul>
+        <ul>
 <li>引言</li>
 </ul>
 <p>对于一个开边界区域，边界上法向流速的流入（流出）导致的净通量大于（小于）0直接影响Eta上升（下降）。真实情况中Eta不会无限上升，也不会无限下降，因此需要对边界条件作一个订正。MITgcm提供了balence边界条件（可在data.obcs中设置），起到的作用是自动订正每个侧边界的瞬时通量为零，然后再使用订正之后的法向流速，这样就可以避免Eta出现不断增加或不断下降的问题。但是Eta不再随季节变化，若要模式模拟出季节变化，就要对边界的法向流速进行修正。</p>
