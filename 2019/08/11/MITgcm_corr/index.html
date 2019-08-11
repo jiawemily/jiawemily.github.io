@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="丸子小姐的博客">
 <meta property="og:description" content="MITgcm修正边界流速 作者：Emily  引言  对于一个开边界区域，边界上法向流速的流入（流出）导致的净通量大于（小于）0直接影响Eta上升（下降）。真实情况中Eta不会无限上升，也不会无限下降，因此需要对边界条件作一个订正。MITgcm提供了balence边界条件（可在data.obcs中设置），起到的作用是自动订正每个侧边界的瞬时通量为零，然后再使用订正之后的法向流速，这样就可以避免Et">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-06T02:19:13.790Z">
+<meta property="og:updated_time" content="2019-08-11T09:01:33.636Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="丸子小姐的博客">
 <meta name="twitter:description" content="MITgcm修正边界流速 作者：Emily  引言  对于一个开边界区域，边界上法向流速的流入（流出）导致的净通量大于（小于）0直接影响Eta上升（下降）。真实情况中Eta不会无限上升，也不会无限下降，因此需要对边界条件作一个订正。MITgcm提供了balence边界条件（可在data.obcs中设置），起到的作用是自动订正每个侧边界的瞬时通量为零，然后再使用订正之后的法向流速，这样就可以避免Et">
@@ -169,6 +169,8 @@
 <li>引言</li>
 </ul>
 <p>对于一个开边界区域，边界上法向流速的流入（流出）导致的净通量大于（小于）0直接影响Eta上升（下降）。真实情况中Eta不会无限上升，也不会无限下降，因此需要对边界条件作一个订正。MITgcm提供了balence边界条件（可在data.obcs中设置），起到的作用是自动订正每个侧边界的瞬时通量为零，然后再使用订正之后的法向流速，这样就可以避免Eta出现不断增加或不断下降的问题。但是Eta不再随季节变化，若要模式模拟出季节变化，就要对边界的法向流速进行修正。</p>
+<a id="more"></a>
+
 <p>1.修正方法</p>
 <p>首先，东（E）、西（W）、南（S）、北（N）侧边界及表面的通量计算公式如下：</p>
 <p>$T_{E}=\sum_{j, k} u\left(i_{E}, j, k\right) \times \Delta y_{G}\left(i_{E}, j\right) \times \Delta r_{F}(k) \times h_{W}\left(i_{E}, j, k\right) \times \operatorname{maskInW}\left(i_{E}, j\right)$</p>
