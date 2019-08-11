@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="丸子小姐的博客">
 <meta property="og:description" content="MITgcm修正边界流速 作者：Emily  引言  对于一个开边界区域，边界上法向流速的流入（流出）导致的净通量大于（小于）0直接影响Eta上升（下降）。真实情况中Eta不会无限上升，也不会无限下降，因此需要对边界条件作一个订正。MITgcm提供了balence边界条件（可在data.obcs中设置），起到的作用是自动订正每个侧边界的瞬时通量为零，然后再使用订正之后的法向流速，这样就可以避免Et">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-11T09:01:33.636Z">
+<meta property="og:updated_time" content="2019-08-11T09:08:40.880Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="丸子小姐的博客">
 <meta name="twitter:description" content="MITgcm修正边界流速 作者：Emily  引言  对于一个开边界区域，边界上法向流速的流入（流出）导致的净通量大于（小于）0直接影响Eta上升（下降）。真实情况中Eta不会无限上升，也不会无限下降，因此需要对边界条件作一个订正。MITgcm提供了balence边界条件（可在data.obcs中设置），起到的作用是自动订正每个侧边界的瞬时通量为零，然后再使用订正之后的法向流速，这样就可以避免Et">
@@ -179,10 +179,10 @@
 <p>$T_{N}=\sum_{i, k} v\left(i, j_{N}, k\right) \times \Delta x_{G}\left(i, j_{N}\right) \times \Delta r_{F}(k) \times h_{S}\left(i, j_{N}, k\right) \times \operatorname{maskInS}\left(i, j_{N}\right)$</p>
 <p>$T_{s c}=\sum_{i, j} E m P(i, j) \times r A_{c}(i, j) \times \operatorname{maskInC} \operatorname(i, j)$</p>
 <p>一般表面通量（蒸发减降水）比侧边界净流量小1-2个量级，这里我们忽略表面通量的影响，考虑Eta的变化完全是由侧边界的流入和流出造成的。净流量$T_{n e t}$大于0表示区域辐散，Eta下降；净流量$T_{n e t}$小于0表示区域辐合，Eta上升。</p>
-<center>$T_{n e t}=\left(T_{E}-T_{W}\right)+\left(T_{N}-T_{S}\right) \sim d i v$
+<center>$T_{n e t}=\left(T_{E}-T_{W}\right)+\left(T_{N}-T_{S}\right) \sim d i v$</center>
 
 <p>订正值为：</p>
-<center>$corr=\sum_{t}T_{net}(t)/\sum_{i,j}Area(i,j)$
+<center>$corr=\sum_{t}T_{net}(t)/\sum_{i,j}Area(i,j)$</center>
 
 <p>保证12个月积分的净通量为零，则东、南边界法向流速需要加上订正值，西、北边界法向流速需要减去订正值。由于该例子北边界和东边界都是陆地，因此只订正西边界和南边界的流速。</p>
 <p>2.MITgcm的网格特点</p>
@@ -197,9 +197,7 @@ velocity correction is 6.815235e-05 m/s
 
 area for OBCS is 9.570100e+09 m2
 net outward transport is -6.250000e-07 Sv
-velocity correction is -6.530757e-11 m/s</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-</center></center>
+velocity correction is -6.530757e-11 m/s</code></pre>
       
 
       
